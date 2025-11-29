@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono,Pixelify_Sans,Inter , Jersey_10 } from "next/font/google";
 import "./globals.css";
-import { Provider } from "@radix-ui/react-tooltip";
+// import { Provider } from "@radix-ui/react-tooltip";
+
+import {
+  ClerkProvider,
+  
+} from '@clerk/nextjs'
+
+import Provider from "./provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,6 +41,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <ClerkProvider>
+
+    
     <html lang="en" suppressHydrationWarning className="dark">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${GameFont.variable} ${inter.variable} antialiased`}
@@ -48,6 +58,7 @@ export default function RootLayout({
              {children}
       </Provider>
       </body>
-    </html>
+      </html>
+    </ClerkProvider>
   );
 }
