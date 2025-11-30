@@ -1,9 +1,11 @@
+//app/provider.tsx
 "use client"
 import React, { useEffect, useState } from 'react'
 import { ThemeProvider as NextThemesProvider } from "next-themes"
 import { useUser } from '@clerk/nextjs';
 import axios from 'axios'
 import { UserDetailContext } from '@/context/UserDetailContext';
+import Header from './_components/Header';
 
 function Provider({
   children,
@@ -27,8 +29,15 @@ const [userDetail,setUserDetail] = useState()
   return (
     <NextThemesProvider
       {...props}>
-      <UserDetailContext.Provider value={{userDetail, setUserDetail}}>
+      <UserDetailContext.Provider value={{ userDetail, setUserDetail }}>
+     
+        <div className='flex flex-col items-center'>   
+        {/* Header */}
+          <Header />
+        </div>
         {children}
+        
+        
       </UserDetailContext.Provider>
          
       </NextThemesProvider>
