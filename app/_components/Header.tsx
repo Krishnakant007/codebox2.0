@@ -109,7 +109,8 @@ function Header() {
           {!user ?
               <Link href={ '/sign-in'} >
                   <Button variant={'pixel'} className='font-game text-2xl'>Signup
-                  </Button></Link>
+                  </Button>
+              </Link>
     : <div className="flex gap-2 items-center">
                   <Button variant={'pixel'} className='font-game text-2xl'>Dashboard</Button>
                   <UserButton/>
