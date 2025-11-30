@@ -1,8 +1,12 @@
 @import "tailwindcss";
-@import "tw-animate-css";
+
 
 @custom-variant dark (&:is(.dark *));
-
+@layer utilities {
+  .font-game {
+    font-family: var(--font-game);
+  }
+}
 @theme inline {
   --font-game:var(--font-game);
   --font-inter:var(--font-inter);
