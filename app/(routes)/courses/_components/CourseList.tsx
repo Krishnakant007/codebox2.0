@@ -3,17 +3,37 @@
 import axios from 'axios'
 import { ChartNoAxesColumnIncreasingIcon } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
 
-type Course = {
+export type Course = {
     id: number,
     courseId: number,
     title: string,
     desc: string,
     level: string,
     bannerImage: string,
-    tag:string
+    tag: string,
+    courseDetail: string,
+    chapters?:Chapter[]
+    
+}
+
+type Chapter = {
+    chapterId: number,
+    courseId: number,
+    desc: string,
+    name: string,
+    id: number,
+    exercises:exercise[]
+}
+
+type exercise = {
+    name: string,
+    slug: string,
+    xp: number,
+    difficulty:string
 }
 function CourseList() {
 
@@ -35,7 +55,10 @@ function CourseList() {
   return (
     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-5 mt-3' >
           {courseList?.map((course, index) => (
-              <div key={index} className='border-4 rounded-xl hover:bg-zinc-900 cursor-pointer' >
+              <Link  href={'/courses/'+course?.courseId} key={index}  >
+              
+              
+              <div className='border-4 rounded-xl hover:bg-zinc-900 cursor-pointer' >
                   <Image src={(course?.bannerImage).trimEnd()} width={400} height={400} alt={course?.title} className='w-full h-[200px] object-cover rounded-t-lg' />
                   
                   <div className='p-4'>
@@ -47,7 +70,8 @@ function CourseList() {
                           {course.level}
                       </h2>
                   </div>
-          </div>
+                  </div>
+              </Link>
       ))}
     </div>
   )

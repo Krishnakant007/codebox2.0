@@ -23,7 +23,7 @@
 //   tags:varchar()
 // })
 
-import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
+import { integer, json, pgTable, varchar } from "drizzle-orm/pg-core";
 
 export const usersTable = pgTable("users", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
@@ -45,5 +45,15 @@ export const CourseTable = pgTable("courses", {
 
 
 
+
+export const CourseChaptersTable = pgTable("courseChapters", {
+  id: integer().primaryKey().generatedAlwaysAsIdentity(),
+  courseId: integer().notNull(),
+  chapterId:integer(),
+  name: varchar(),
+  desc: varchar(),
+  exercises: json(),
+  
+});
 
 //npx drizzle-kit push
