@@ -23,7 +23,7 @@
 //   tags:varchar()
 // })
 
-import { integer, json, pgTable, varchar } from "drizzle-orm/pg-core";
+import { integer, json, pgTable, varchar,timestamp } from "drizzle-orm/pg-core";
 
 export const usersTable = pgTable("users", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
@@ -57,3 +57,12 @@ export const CourseChaptersTable = pgTable("courseChapters", {
 });
 
 //npx drizzle-kit push
+
+
+export const EnrolledCourse = pgTable('enrollCourse', {
+  id: integer().primaryKey().generatedAlwaysAsIdentity(),
+  courseId: integer(),
+  userId: varchar(),
+  enrolledDate: timestamp().defaultNow(),
+  xpEarned:integer()
+})
