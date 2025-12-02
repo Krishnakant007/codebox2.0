@@ -9,6 +9,7 @@ import {
 } from '@clerk/nextjs'
 
 import Provider from "./provider";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -55,7 +56,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-             {children}
+            {children}
+            
+            <Toaster/>
       </Provider>
       </body>
       </html>
